@@ -6,7 +6,7 @@ The purpose of this program is to help the railroad provide its customers with i
 
 Class Diagrams
 -------------
--![alt text](http://i.imgur.com/Z4jf2tF.png README.md URL")
+![alt text](http://i.imgur.com/Z4jf2tF.png README.md URL")
 
 Implementation Details
 -------------
