@@ -17,6 +17,12 @@ Once Graph and GraphTask created application stars with executeing tasks by call
 
 Results of the task printed on console using log4j console appander.
 
+## Missing Features
+* spring framework but Spring Tool Suite is used
+* Unit, Integrity and Functional test
+* Finding paths less than interms of travelling length
+* Finding paths in maximum steps
+
 References
 -------------
 
