@@ -22,6 +22,7 @@ public class Graph {
 	
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
+		sb.append("\nGraph:\n");
 		sb.append("\nVertexes:\n");
 		
 		Iterator<Vertex> vertexInterator = vertexes.iterator();

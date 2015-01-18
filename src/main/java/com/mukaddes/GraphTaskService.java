@@ -8,5 +8,7 @@ import java.util.List;
  *
  */
 public interface GraphTaskService {
+	
 	public List<GraphTask> getTasks();
+	
 }

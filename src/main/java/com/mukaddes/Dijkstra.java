@@ -42,7 +42,7 @@ public class Dijkstra {
 	 * @param graph The graph that Dijkstra algorithm will be applied.
 	 */
 	public Dijkstra(GraphService graphService) {
-		this.ctx = new ClassPathXmlApplicationContext("beans.xml");
+		//this.ctx = new ClassPathXmlApplicationContext("beans.xml");
 		Graph graph = graphService.getGraph();
 		this.nodes = new ArrayList<Vertex>(graph.getVertexes());
 		this.edges = new ArrayList<Edge>(graph.getEdges());
@@ -158,6 +158,7 @@ public class Dijkstra {
 	 * @return Returns the weight of the edge from destination to target node if it is exist. 
 	 */
 	private int getDistance(Vertex source, Vertex destination) {
+		
 		for (Edge edge : edges) {
 			
 			if (edge.getSource().equals(source) && edge.getDestination().equals(destination)) {
@@ -174,6 +175,7 @@ public class Dijkstra {
 	 * @return Returns true if the given vertex is settled or returns false.
 	 */
 	private boolean isSettled(Vertex vertex) {
+		
 		return discoveredNodes.contains(vertex);
 	}
 	
@@ -183,6 +185,7 @@ public class Dijkstra {
 	 * @return Returns the path from the source vertex to the destination vertex.
 	 */
 	public LinkedList<Vertex> getPath(Vertex destination) {
+		
 		LinkedList<Vertex> path = new LinkedList<Vertex>();
 		Vertex step = destination;
 		
