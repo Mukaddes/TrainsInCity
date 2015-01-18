@@ -1,0 +1,46 @@
+// Single line comments allowed in input data.
+// Every comment has to start with double slashes.
+// Author Mukaddes Büyükkavut Ertaş
+
+// Graph data starts with Graph: word
+
+Graph: AB5 BC4 CD8 DC8 DE6 AD5 CE2 EB3 AE7
+
+// Requested informations
+
+// Tasks starts with Task: word
+
+// #DS asks for distance of path  in term of steps, starting from town represented by first character
+// to town represented with last character. There can be any additional characters to represent
+// mid towns to visit to go destination town.
+
+Task: #DS A-B
+Task: #DS A-B-C
+
+// #DL asks for distance of path  in term of length, starting from town represented by first character
+// to town represented with last character. There can be any additional characters to represent
+// mid towns to visit to go destination town.
+
+Task: #DL A-B
+Task: #DL A-B-C
+
+// #PLT asks for number of paths starting from town represented by first character
+// to town represented with second character.
+// Last character defines the limiting distance.
+
+Task: #PLT A-C-30
+Task: #PLT B-D-50
+
+// #PM asks for number of paths starting from town represented by first character
+// to town represented with second character.
+// Last character defines the maximum step count
+
+Task: #PM C-C-3
+Task: #PM B-E-4
+
+// #PE asks for number of paths starting from town represented by first character
+// to town represented with second character.
+// Last character defines the exact step count
+
+Task: #PE A-C-4
+Task: #PE B-D-2
