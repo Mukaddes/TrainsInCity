@@ -6,6 +6,7 @@ The purpose of this program is to help the railroad provide its customers with i
 
 Class Diagrams
 -------------
+-![alt text](http://i.imgur.com/Z4jf2tF.png README.md URL")
 
 Implementation Details
 -------------
@@ -17,11 +18,9 @@ Once Graph and GraphTask created application stars with executeing tasks by call
 
 Results of the task printed on console using log4j console appander.
 
-## Missing Features
-* spring framework but Spring Tool Suite is used
-* Unit, Integrity and Functional test
-* Finding paths less than interms of travelling length
-* Finding paths in maximum steps
+Missing Features 
+-------------
+
 
 References
 -------------
