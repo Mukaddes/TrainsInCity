@@ -14,15 +14,15 @@ Graph: AB5 BC4 CD8 DC8 DE6 AD5 CE2 EB3 AE7
 // to town represented with last character. There can be any additional characters to represent
 // mid towns to visit to go destination town.
 
-Task: #DS A-B
-Task: #DS A-B-C
+//Task: #DS A-B
+//Task: #DS A-B-C
 
 // #DL asks for distance of path  in term of length, starting from town represented by first character
 // to town represented with last character. There can be any additional characters to represent
 // mid towns to visit to go destination town.
 
-Task: #DL A-B
-Task: #DL A-B-C
+//Task: #DL A-B
+//Task: #DL A-B-C
 
 // #PLT asks for number of paths starting from town represented by first character
 // to town represented with second character.
@@ -35,8 +35,8 @@ Task: #PLT B-D-50
 // to town represented with second character.
 // Last character defines the maximum step count
 
-Task: #PM C-C-3
-Task: #PM B-E-4
+//Task: #PM C-C-3
+//Task: #PM B-E-4
 
 // #PE asks for number of paths starting from town represented by first character
 // to town represented with second character.

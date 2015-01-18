@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,12 +24,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Dijkstra {
 	
+	private static Logger logger = LogManager.getLogger(Dijkstra.class.getSimpleName());
+	
 	@SuppressWarnings("unused")
 	private ApplicationContext ctx;
 
 	@SuppressWarnings("unused")
-	private final List<Vertex> nodes;
-	private final List<Edge> edges;
+	private final List<Vertex> vertexList;
+	private final List<Edge> edgeList;
+	private final Map<String, Vertex> vertexMap;
+	private final Map<String, Edge> edgeMap;
 	
 	private Set<Vertex> discoveredNodes;
 	private Set<Vertex> visitedNodes;
@@ -41,11 +48,20 @@ public class Dijkstra {
 	 * Constructor of the Dijkstra.
 	 * @param graph The graph that Dijkstra algorithm will be applied.
 	 */
-	public Dijkstra(GraphService graphService) {
-		//this.ctx = new ClassPathXmlApplicationContext("beans.xml");
-		Graph graph = graphService.getGraph();
-		this.nodes = new ArrayList<Vertex>(graph.getVertexes());
-		this.edges = new ArrayList<Edge>(graph.getEdges());
+	public Dijkstra(Graph graph) {
+		this.vertexList = new ArrayList<Vertex>(graph.getVertexes());
+		this.edgeList = new ArrayList<Edge>(graph.getEdges());
+		this.vertexMap = new HashMap<String, Vertex>();
+		
+		for (Vertex vertex : vertexList) {
+			vertexMap.put(vertex.getName(), vertex);
+		}
+		
+		this.edgeMap = new HashMap<String, Edge>();
+		
+		for (Edge edge : edgeList) {
+			edgeMap.put(edge.getId(), edge);
+		}
 	}
 
 	/**
@@ -103,7 +119,7 @@ public class Dijkstra {
 	 * @return Returns the weight of the shortest distance from source to destination node if there is a path to
 	 * source to destination. Or it returns Integer.MAX_VALUE.
 	 */
-	private int getShortestDistance(Vertex destination) {
+	public int getShortestDistance(Vertex destination) {
 		Integer d = shortestDistancesMap.get(destination);
 		
 		if (d == null) {
@@ -115,8 +131,8 @@ public class Dijkstra {
 	}
 
 	/**
-	 * This methods finds the minimum distances 
-	 * @param node
+	 * This methods finds the minimum distances of the vertexes, which adjacent to given vertex, to source vertex.
+	 * @param node Vertex which its adjacent vertexes's distance will be found.
 	 */
 	private void findMinimalDistances(Vertex node) {
 		
@@ -133,15 +149,15 @@ public class Dijkstra {
 	}
 	
 	/**
-	 * This method returns the list of vertexes that neighbor to given node and not sattled.
+	 * This method returns the list of vertexes that neighbor to given node and not settled.
 	 * @param node The vertex which its neighbors requested.
 	 * @return Returns the list of vertexes that neighbor to given node.
 	 */
-	private List<Vertex> getNeighbors(Vertex node) {
+	public List<Vertex> getNeighbors(Vertex node) {
 		
 		List<Vertex> neighbors = new ArrayList<Vertex>();
 		
-		for (Edge edge : edges) {
+		for (Edge edge : edgeList) {
 			
 			if (edge.getSource().equals(node) && !isSettled(edge.getDestination())) {
 				neighbors.add(edge.getDestination());
@@ -149,6 +165,14 @@ public class Dijkstra {
 		}
 		
 		return neighbors;
+	}
+	
+	public List<Edge> getEdgeList(){
+		return edgeList;
+	}
+	
+	public List<Vertex> getVertexList(){
+		return vertexList;
 	}
 
 	/**
@@ -159,7 +183,7 @@ public class Dijkstra {
 	 */
 	private int getDistance(Vertex source, Vertex destination) {
 		
-		for (Edge edge : edges) {
+		for (Edge edge : edgeList) {
 			
 			if (edge.getSource().equals(source) && edge.getDestination().equals(destination)) {
 				return edge.getWeight();
@@ -204,5 +228,9 @@ public class Dijkstra {
 		// Put it into the correct order
 		Collections.reverse(path);
 		return path;
+	}
+	
+	public Vertex getVertexWithName(String name){
+		return vertexMap.get(name);
 	}
 }

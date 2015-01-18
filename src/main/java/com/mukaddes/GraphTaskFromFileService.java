@@ -33,7 +33,7 @@ public class GraphTaskFromFileService implements GraphTaskService {
 	}
 
 	@Override
-	public List<GraphTask> getTasks() {
+	public LinkedList<GraphTask> getTasks() {
 		taskList = new LinkedList<GraphTask>();
 		File file = new File(fileName);
 
