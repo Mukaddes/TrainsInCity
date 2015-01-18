@@ -1,4 +1,4 @@
-package com.mukcay;
+package com.mukaddes;
 
 import java.util.ArrayList;
 import java.util.Iterator;
